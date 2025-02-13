@@ -6,7 +6,7 @@ L'infrastructure doit contenir de la haute dispo pour cela elle doit intégrer d
 Technologie utilisé : 
 - Frameworks : **Flask**
 - ORM : 
-- BDD : 
-- Serveur Web : 
--  WAF : 
-- Reverse Proxy : 
+- BDD : Mariadb
+- Serveur Web : Nginx
+- WAF : Bunkerweb
+- Reverse Proxy : Bunkerweb
