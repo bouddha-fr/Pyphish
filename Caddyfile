@@ -1,4 +1,5 @@
-localhost {
-    reverse_proxy 127.0.0.1:8000
-    encode gzip
+localhost:443 {
+	reverse_proxy 127.0.0.1:8000
+	encode gzip
+	tls internal
 }

@@ -13,6 +13,17 @@ files = [
 ]
 
 [[package]]
+name = "caddy"
+version = "1.3.2"
+description = "Semester project for OOP course"
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "caddy-1.3.2.tar.gz", hash = "sha256:7a479d54b101fed2af6ac9fafe83d3e9578f4b08cdd649c911fe6087f230c715"},
+]
+
+[[package]]
 name = "click"
 version = "8.1.8"
 description = "Composable command line interface toolkit"
@@ -415,4 +426,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.13"
-content-hash = "13b91275cad135702e88790a452369a78d6926508644d9b33893c3cdafc1b629"
+content-hash = "bca2ed2ef09814ac9354cf50266c6b8093983fe30896aec3a77675096881b4a0"
