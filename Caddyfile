@@ -1,5 +1,5 @@
-127.0.0.1:443 {
-	reverse_proxy 127.0.0.1:8000
+172.16.27.135:443 {
+	reverse_proxy 172.16.27.135:8000
 	encode gzip
 	tls internal
 }
