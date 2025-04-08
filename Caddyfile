@@ -1,6 +1,5 @@
-{$ADDRESS}{BASE_DOMAIN} {
-	reverse_proxy {ADDRESS}:8000
+127.0.0.1:443 {
+	reverse_proxy 127.0.0.1:8000
 	encode gzip
 	tls internal
-	#tls acme
 }
