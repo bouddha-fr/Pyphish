@@ -8,5 +8,5 @@ Technologie utilisé :
 - ORM : 
 - BDD : Mariadb
 - Serveur Web : Nginx
-- WAF : Bunkerweb
-- Reverse Proxy : Bunkerweb
+- WAF : CrowdSec
+- Reverse Proxy : Caddy

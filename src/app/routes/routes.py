@@ -6,6 +6,6 @@ def register_routes(app: Flask):
     @app.route("/")
     def hello_world():
         return render_template('index.html')
-    @app.route("/pydashboard")
+    @app.route("/connexion")
     def dashboard():
-        return render_template('pydashboard.html')
+        return render_template('pyconnexion.html')
