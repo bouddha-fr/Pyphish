@@ -1,8 +1,5 @@
 from flask import Flask
 from src.app.routes.routes import register_routes
-from dotenv import load_dotenv
-
-load_dotenv()
 
 app = Flask(__name__)
 register_routes(app)
