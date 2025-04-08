@@ -9,6 +9,17 @@
 <body>
   <div class="login-container">
     <h1 class="title">🎣 Pyphish</h1>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    
     <form class="login-form" method="POST" action="/login">
       <input type="text" name="username" placeholder="Nom d'utilisateur" required />
       <input type="password" name="password" placeholder="Mot de passe" required />
