@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
-from app.models import Utilisateur
 from app.models import db, Cible, TemplateSite
+
 
 def register_routes(app: Flask, db):
     @app.route("/")
@@ -30,8 +30,6 @@ def register_routes(app: Flask, db):
 
     @app.route("/dashboard")
     def dashboard():
-        if "utilisateur_id" not in session:
-            return redirect(url_for("connexion"))
         return render_template('pydashboard.html')
 
     @app.route("/formulaire", methods=["GET", "POST"])
@@ -59,7 +57,6 @@ def register_routes(app: Flask, db):
 
         # Afficher le formulaire d'inscription si la méthode est GET
         return render_template('pyformulaire.html')
-
     @app.route('/google', methods=['GET'])
     def fake_google():
         return render_template('fakeform.html')
