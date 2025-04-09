@@ -76,4 +76,4 @@ def register_routes(app: Flask, db):
             return redirect(url_for("dashboard"))
         else:
             flash("Email ou mot de passe incorrect", "danger")
-            return redirect(url_for("connexion"))
+            return redirect(url_for("connexion"))     
