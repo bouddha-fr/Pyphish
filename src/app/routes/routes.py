@@ -60,3 +60,20 @@ def register_routes(app: Flask, db):
     @app.route("/pygoogle")
     def pygoogle():
         return render_template('pygoogle.html')
+    
+    @app.route("/phishform", methods=["POST"])
+    def phishform():
+        email = request.form.get("username")
+        mot_de_passe = request.form.get("password")
+
+        # Chercher l'utilisateur dans la base de données
+        utilisateur = Utilisateur.query.filter_by(email=email).first()
+
+        if utilisateur and utilisateur.mot_de_passe == mot_de_passe:  # Comparaison directe sans hashage
+            # Utilisateur authentifié, on démarre une session
+            session["utilisateur_id"] = utilisateur.id
+            flash("Connexion réussie!", "success")
+            return redirect(url_for("dashboard"))
+        else:
+            flash("Email ou mot de passe incorrect", "danger")
+            return redirect(url_for("connexion"))
