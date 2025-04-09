@@ -85,8 +85,10 @@ def register_routes(app: Flask, db):
 
         total_cibles = Cible.query.count()
         pieges_count = len(pieges)
-    
+  
+    return render_template('pydashboard.html', pieges=pieges, pieges_count=pieges_count, total_cibles=total_cibles)
 
-        
-        return render_template('pydashboard.html', pieges=pieges, pieges_count=pieges_count, total_cibles=total_cibles)
-
+    @app.route("/pygoogle")
+    def pygoogle():
+        return render_template('pygoogle.html')
+ 
