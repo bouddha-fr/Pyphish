@@ -1,0 +1,14 @@
+[Unit]
+Description=Gunicorn Flask App via Poetry
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/arch/Pyphish
+ExecStart=/bin/bash -c 'poetry run gunicorn -w 4 -b 172.16.27.135:8000 src.app.pyphish:app'
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

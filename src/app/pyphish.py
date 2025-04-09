@@ -6,7 +6,7 @@ from app.models import db  # Si db est défini dans models, on l'importera ici
 app = Flask(__name__)
 
 # Configuration de l'application Flask
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mariadb+mariadbconnector://root:Motdepasse@172.16.27.135:3306/pyphish'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mariadb+mariadbconnector://root:Motdepasse@172.16.160.132:3306/pyphish'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'Motdepasse'
 
