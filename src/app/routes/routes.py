@@ -28,9 +28,6 @@ def register_routes(app: Flask, db):
             flash("Email ou mot de passe incorrect", "danger")
             return redirect(url_for("connexion"))
 
-    @app.route("/dashboard")
-    def dashboard():
-        return render_template('pydashboard.html')
 
     @app.route("/formulaire", methods=["GET", "POST"])
     def pyformulaire():
@@ -81,3 +78,15 @@ def register_routes(app: Flask, db):
         db.session.commit()
 
         return redirect("https://www.google.com")
+
+    @app.route('/dashboard')
+    def dashboard():
+        pieges =  Cible.query.all()
+
+        total_cibles = Cible.query.count()
+        pieges_count = len(pieges)
+    
+
+        
+        return render_template('pydashboard.html', pieges=pieges, pieges_count=pieges_count, total_cibles=total_cibles)
+

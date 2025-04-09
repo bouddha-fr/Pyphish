@@ -1,139 +1,10 @@
-<!-- <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gophish Dashboard</title>
-    <link rel="stylesheet" href="../static/pydash.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
-    <header>
-        <div class="logo-container">
-            <div class="logo">
-                <i class="fas fa-fish"></i>
-            </div>
-            <h1>gophish</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#" class="nav-link"></a></li>
-                <li><a href="#" class="nav-link"></a></li>
-                <li><a href="#" class="nav-link"></a></li>
-                <li><a href="#" class="nav-link"></a></li>
-            </ul>
-        </nav>
-        <div class="profile-button">
-            <button class="profile-btn"></button>
-        </div>
-    </header>
-
-    <div class="container">
-        <aside class="sidebar">
-            <div class="menu-item-highlight"></div>
-            <div class="menu-item"></div>
-            <div class="menu-item"></div>
-            <div class="menu-item"></div>
-            <div class="menu-item"></div>
-            <div class="menu-item"></div>
-            <div class="menu-item"></div>
-        </aside>
-
-        <main>
-            <h2>Results for Campaign</h2>
-            <div class="filters">
-                <button class="filter-btn filter-gray"></button>
-                <button class="filter-btn filter-green"></button>
-                <button class="filter-btn filter-blue"></button>
-                <button class="filter-btn filter-red"></button>
-            </div>
-
-            <div class="campaign-timeline">
-                <h3>Campaign Timeline</h3>
-                <div class="timeline">
-                    <div class="timeline-point green active"></div>
-                    <div class="timeline-line"></div>
-                    <div class="timeline-point yellow active"></div>
-                    <div class="timeline-line"></div>
-                    <div class="timeline-point orange active"></div>
-                    <div class="timeline-line"></div>
-                    <div class="timeline-point red active"></div>
-                </div>
-            </div>
-
-            <div class="metrics-container">
-                <div class="metric-card">
-                    <h4>Email Sent</h4>
-                    <div class="circle-progress">
-                        <div class="circle-progress-inner green">
-                            <span class="circle-icon"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="metric-card">
-                    <h4>Email Opened</h4>
-                    <div class="circle-progress">
-                        <div class="circle-progress-inner yellow">
-                            <span class="circle-icon"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="metric-card">
-                    <h4>Clicked Link</h4>
-                    <div class="circle-progress">
-                        <div class="circle-progress-inner orange">
-                            <span class="circle-icon"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="metric-card">
-                    <h4>Submitted Data</h4>
-                    <div class="circle-progress">
-                        <div class="circle-progress-inner red">
-                            <span class="circle-icon"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="details-section">
-                <h3>Details</h3>
-                <div class="details-content">
-                    <div class="detail-row">
-                        <div class="detail-line"></div>
-                        <div class="detail-line"></div>
-                        <div class="detail-line"></div>
-                        <div class="detail-line orange"></div>
-                    </div>
-                    <h4>Timeline For</h4>
-                    <div class="timeline-detail">
-                        <div class="timeline-detail-item">
-                            <div class="icon green"><i class="fas fa-check-circle"></i></div>
-                            <div class="timeline-text"></div>
-                        </div>
-                        <div class="timeline-detail-item">
-                            <div class="icon yellow"><i class="fas fa-envelope-open"></i></div>
-                            <div class="timeline-text"></div>
-                        </div>
-                        <div class="timeline-detail-item">
-                            <div class="icon orange"><i class="fas fa-link"></i></div>
-                            <div class="timeline-text"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-</body>
-</html> -->
-
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PyPhish - Dashboard</title>
-  <link rel="stylesheet" href="../static/pydash.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='pydash.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -181,31 +52,31 @@
         <div class="stats-container">
           <div class="stat-card">
             <div class="stat-circle email-sent">
-              <span class="stat-value">85%</span>
+              <span class="stat-value">??</span>
             </div>
             <h3>Emails envoyés</h3>
-            <p>156/180</p>
+            <p>??/??</p>
           </div>
           <div class="stat-card">
             <div class="stat-circle email-opened">
-              <span class="stat-value">62%</span>
+              <span class="stat-value">??</span>
             </div>
             <h3>Emails ouverts</h3>
-            <p>97/156</p>
+            <p>??</p>
           </div>
           <div class="stat-card">
             <div class="stat-circle link-clicked">
-              <span class="stat-value">41%</span>
+              <span class="stat-value">??</span>
             </div>
             <h3>Liens cliqués</h3>
-            <p>64/156</p>
+            <p></p>
           </div>
           <div class="stat-card">
             <div class="stat-circle data-submitted">
-              <span class="stat-value">28%</span>
+              <span class="stat-value">??</span>
             </div>
-            <h3>Données saisies</h3>
-            <p>43/156</p>
+            <h3>Données saisies </h3>
+            <p> {{pieges_count}} / {{total_cibles}} </p>
           </div>
         </div>
 
@@ -240,165 +111,17 @@
                 </tr>
               </thead>
               <tbody id="users-data">
-              </tbody>
-            </table>
-          </div>
-
-          <div class="pagination">
-            <button class="page-btn" disabled><i class="fas fa-chevron-left"></i></button>
-            <span class="page-info">Page 1 de 3</span>
-            <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <script src="../static/pydash.js"></script>
-</body>
-</html> -->
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PyPhish - Dashboard</title>
-  <link rel="stylesheet" href="../static/pydash.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
-  <div class="container">
-    <aside class="sidebar">
-      <div class="logo">
-        <h1>PyPhish</h1>
-      </div>
-      <nav class="menu">
-        <ul>
-          <li class="active"><a href="#"><i class="fas fa-chart-line"></i> Dashboard</a></li>
-          <li><a href="#"><i class="fas fa-users"></i> Utilisateurs</a></li>
-          <li><a href="#"><i class="fas fa-fish"></i> Campagnes</a></li>
-          <li><a href="#"><i class="fas fa-envelope"></i> Templates</a></li>
-          <li><a href="#"><i class="fas fa-cog"></i> Paramètres</a></li>
-          <li><a href="#"><i class="fas fa-question-circle"></i> Aide</a></li>
-        </ul>
-      </nav>
-      <div class="user-profile">
-        <div class="avatar">
-          <i class="fas fa-user"></i>
-        </div>
-        <div class="user-info">
-          <p class="username">Admin</p>
-          <a href="#" class="logout">Déconnexion</a>
-        </div>
-      </div>
-    </aside>
-
-    <main class="content">
-      <header class="top-bar">
-        <div class="search-bar">
-          <input type="text" placeholder="Rechercher...">
-          <button class="search-btn"><i class="fas fa-search"></i></button>
-        </div>
-        <div class="actions">
-          <button class="action-btn"><i class="fas fa-bell"></i></button>
-          <button class="action-btn"><i class="fas fa-plus"></i> Nouvelle campagne</button>
-        </div>
-      </header>
-
-      <section class="dashboard">
-        <h2>Résultats de la campagne "Template Google"</h2>
-        
-        <div class="stats-container">
-          <div class="stat-card">
-            <div class="stat-icon email-sent">
-              <i class="fas fa-paper-plane"></i>
-            </div>
-            <div class="stat-content">
-              <h3>Emails envoyés</h3>
-              <div class="stat-number">156</div>
-              <div class="stat-total">sur 180 cibles</div>
-              <div class="progress-bar">
-                <div class="progress" style="width: 85%;"></div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="stat-card">
-            <div class="stat-icon email-opened">
-              <i class="fas fa-envelope-open"></i>
-            </div>
-            <div class="stat-content">
-              <h3>Emails ouverts</h3>
-              <div class="stat-number">97</div>
-              <div class="stat-total">sur 156 envoyés</div>
-              <div class="progress-bar">
-                <div class="progress" style="width: 62%;"></div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="stat-card">
-            <div class="stat-icon link-clicked">
-              <i class="fas fa-mouse-pointer"></i>
-            </div>
-            <div class="stat-content">
-              <h3>Liens cliqués</h3>
-              <div class="stat-number">64</div>
-              <div class="stat-total">sur 156 envoyés</div>
-              <div class="progress-bar">
-                <div class="progress" style="width: 41%;"></div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="stat-card">
-            <div class="stat-icon data-submitted">
-              <i class="fas fa-key"></i>
-            </div>
-            <div class="stat-content">
-              <h3>Données saisies</h3>
-              <div class="stat-number">43</div>
-              <div class="stat-total">sur 156 envoyés</div>
-              <div class="progress-bar">
-                <div class="progress" style="width: 28%;"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="data-section">
-          <div class="section-header">
-            <h2>Utilisateurs piégés (Template Google)</h2>
-            <div class="section-actions">
-              <button class="btn-export"><i class="fas fa-download"></i> Exporter</button>
-              <div class="filter-dropdown">
-                <button class="btn-filter"><i class="fas fa-filter"></i> Filtrer</button>
-                <div class="dropdown-content">
-                  <a href="#">Tous</a>
-                  <a href="#">Aujourd'hui</a>
-                  <a href="#">Cette semaine</a>
-                  <a href="#">Ce mois</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="table-container">
-            <table class="users-table">
-              <thead>
+                {% for user in pieges %}
                 <tr>
-                  <th>ID</th>
-                  <th>Nom d'utilisateur</th>
-                  <th>Email</th>
-                  <th>Mot de passe</th>
-                  <th>IP</th>
-                  <th>Date/Heure</th>
-                  <th>Actions</th>
+                  <td>{{ user.id }}</td>
+                  <td>{{ user.nom }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.mot_de_passe }}</td>
+                  <td>{{ user.ip }}</td>
+                  <td>{{ user.datetime }}</td>
+                  <td><i class="fas fa-trash-alt" style="cursor:pointer;"></i></td>
                 </tr>
-              </thead>
-              <tbody id="users-data">
-                <!-- Les données seront injectées ici via JavaScript -->
+                {% endfor %}
               </tbody>
             </table>
           </div>
@@ -413,6 +136,6 @@
     </main>
   </div>
 
-  <script src="../static/pydash.js"></script>
+  <script src="{{ url_for('static', filename='pydash.js') }}"></script>
 </body>
 </html>
