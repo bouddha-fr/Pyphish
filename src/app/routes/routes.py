@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
-from src.app.models import Utilisateur
+from app.models import Utilisateur
 
 def register_routes(app: Flask, db):
     @app.route("/")
@@ -58,3 +58,7 @@ def register_routes(app: Flask, db):
 
         # Afficher le formulaire d'inscription si la méthode est GET
         return render_template('pyformulaire.html')
+    
+    @app.route("/pygoogle")
+    def pygoogle():
+        return render_template('pygoogle.html')

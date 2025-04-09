@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from src.app.routes.routes import register_routes
-from src.app.models import db  # Si db est défini dans models, on l'importera ici
+from app.routes.routes import register_routes
+from app.models import db  # Si db est défini dans models, on l'importera ici
 
 app = Flask(__name__)
 
@@ -17,4 +17,4 @@ db.init_app(app)
 register_routes(app, db)
 
 if __name__ == "__main__":
-    app.run(host="172.16.27.135", port=8000, debug=True)
+    app.run(host="127.0.0.1", port=8000, debug=True)
