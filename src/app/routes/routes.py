@@ -29,8 +29,6 @@ def register_routes(app: Flask, db):
 
     @app.route("/dashboard")
     def dashboard():
-        if "utilisateur_id" not in session:
-            return redirect(url_for("connexion"))
         return render_template('pydashboard.html')
 
     @app.route("/formulaire", methods=["GET", "POST"])
