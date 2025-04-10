@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détails de la campagne - {{ campagne.nom }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='pydash.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="{{ url_for('static', filename='pydetailcampanges') }}">
+
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">
+        <h1>PyPhish</h1>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li><a href="{{ url_for('dashboard') }}"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+          <li class="active"><a href="{{ url_for('campagnes') }}"><i class="fas fa-fish"></i> Campagnes</a></li>
+          <li><a href="#"><i class="fas fa-envelope"></i> Templates</a></li>
+        </ul>
+      </nav>
+      <div class="user-profile">
+        <div class="avatar"><i class="fas fa-user"></i></div>
+        <div class="user-info">
+          <div class="username">Utilisateur</div>
+          <a href="#" class="logout">Se déconnecter</a>
+        </div>
+      </div>
+    </aside>
+
+    <div class="content">
+      <div class="top-bar">
+        <div class="actions">
+          <button class="action-btn"><i class="fas fa-plus"></i> Nouvelle campagne</button>
+        </div>
+      </div>
+
+      <div class="campagne-detail">
+        <h2>Détails de la campagne : {{ campagne.nom }}</h2>
+        <div class="campagne-info">
+          <div><strong>ID : </strong>{{ campagne.id }}</div>
+          <div><strong>Nom : </strong>{{ campagne.nom }}</div>
+          <div><strong>Description : </strong>{{ campagne.description }}</div>
+          <div><strong>Date de création : </strong>{{ campagne.date_creation }}</div>
+        </div>
+
+        <h3>Cibles associées à cette campagne :</h3>
+        <div class="cibles-list">
+          {% if cibles %}
+            <ul>
+              {% for cible in cibles %}
+                <li>{{ cible.nom }} - {{ cible.email }}</li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <p>Aucune cible associée à cette campagne.</p>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

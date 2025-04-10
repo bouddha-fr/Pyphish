@@ -9,7 +9,6 @@ class Utilisateur(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), unique=True, nullable=False)
     mot_de_passe = db.Column(db.String(255), nullable=False)
-    role = db.Column(db.Enum('admin', 'user'), nullable=False)
     date_creation = db.Column(db.DateTime, default=datetime.utcnow)
 
     campagnes = db.relationship('Campagne', backref='utilisateur', lazy=True)
@@ -29,7 +28,6 @@ class TemplateSite(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     nom = db.Column(db.String(255), nullable=False)
-    url_redirection = db.Column(db.String(255))
 
     cibles = db.relationship('Cible', backref='template', lazy=True)
     campagnes = db.relationship('Campagne', backref='template', lazy=True)
@@ -53,16 +51,15 @@ class Cible(db.Model):
     def __repr__(self):
         return f'<Cible {self.email}>'
 
-
 class Campagne(db.Model):
     __tablename__ = 'campagne'
-
     id = db.Column(db.Integer, primary_key=True)
     nom = db.Column(db.String(255), nullable=False)
-    date_lancement = db.Column(db.DateTime, default=datetime.utcnow)
+    date_debut = db.Column(db.DateTime, default=datetime.utcnow)
+    etat = db.Column(db.String(255), nullable=False)
 
-    utilisateur_id = db.Column(db.Integer, db.ForeignKey('utilisateur.id'), nullable=True)
-    template_id = db.Column(db.Integer, db.ForeignKey('template_site.id'), nullable=True)
+    utilisateur_id = db.Column(db.Integer, db.ForeignKey('utilisateur.id', ondelete='SET NULL'))
+    template_id = db.Column(db.Integer, db.ForeignKey('template_site.id', ondelete='SET NULL'))
 
     def __repr__(self):
         return f'<Campagne {self.nom}>'

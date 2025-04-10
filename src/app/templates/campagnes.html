@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PyPhish - Campagnes</title>
+  <link rel="stylesheet" href="/static/pydash.css">
+  <link rel="stylesheet" href="/static/pycampagne.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">
+        <h1>PyPhish</h1>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li><a href="/dashboard"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+          <li class="active"><a href="/campagnes"><i class="fas fa-fish"></i> Campagnes</a></li>
+          <li><a href="#"><i class="fas fa-envelope"></i> Templates</a></li>
+        </ul>
+      </nav>
+      <div class="user-profile">
+        <div class="avatar">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="user-info">
+          <p class="username">Admin</p>
+          <a href="/deconnexion" class="logout">Déconnexion</a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="top-bar">
+        <div class="actions">
+          <button class="action-btn"><i class="fas fa-plus"></i> Nouvelle campagne</button>
+        </div>
+      </header>
+
+      <section class="campaigns">
+        <h2>Gestion des Campagnes</h2>
+
+        <div class="stats-container">
+          <div class="stat-card">
+            <div class="stat-circle active-campaigns">
+              <span class="stat-value">{{ campagnes_end }}</span>
+            </div>
+            <h3>Campagnes Actives</h3>
+          </div>
+          <div class="stat-card">
+            <div class="stat-circle completed-campaigns">
+              <span class="stat-value">{{ campagnes_active }}</span>
+            </div>
+            <h3>Campagnes Terminées</h3>
+          </div>
+        </div>
+
+        <div class="data-section">
+          <div class="section-header">
+            <h2>Liste des Campagnes</h2>
+          </div>
+
+          <div class="table-container">
+            <table class="campaigns-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nom de la campagne</th>
+                  <th>Status</th>
+                  <th>Template</th>
+                  <th>Utilisateur</th>
+                  <th>Date de début</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="campaigns-data">
+                {% for campaign in campagnes %}
+                <tr>
+                  <td>{{ campaign.id }}</td>
+                  <td>{{ campaign.nom }}</td>
+                  <td>{{ campaign.etat }}</td>
+                  <td>{{ campaign.template.nom if campaign.template else 'N/A' }}</td>
+                  <td>{{ campaign.utilisateur.email if campaign.utilisateur else 'N/A' }}</td>
+                  <td>{{ campaign.date_debut.strftime('%Y-%m-%d %H:%M') }}</td>
+                  <td>
+                    <a class="action-btn" href="/campagne/{{ campaign.id }}"><i class="fas fa-eye"></i> Détails</a>
+                    <button class="action-btn"><i class="fas fa-trash-alt"></i> Supprimer</button>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pagination">
+            <button class="page-btn" disabled><i class="fas fa-chevron-left"></i></button>
+            <span class="page-info">Page 1</span>
+            <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/scripts/pydash.js"></script>
+</body>
+</html>

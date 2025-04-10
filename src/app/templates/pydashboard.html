@@ -16,11 +16,8 @@
       <nav class="menu">
         <ul>
           <li class="active"><a href="#"><i class="fas fa-chart-line"></i> Dashboard</a></li>
-          <li><a href="#"><i class="fas fa-users"></i> Utilisateurs</a></li>
-          <li><a href="#"><i class="fas fa-fish"></i> Campagnes</a></li>
+          <li><a href="campagnes"><i class="fas fa-fish"></i> Campagnes</a></li>
           <li><a href="#"><i class="fas fa-envelope"></i> Templates</a></li>
-          <li><a href="#"><i class="fas fa-cog"></i> Paramètres</a></li>
-          <li><a href="#"><i class="fas fa-question-circle"></i> Aide</a></li>
         </ul>
       </nav>
       <div class="user-profile">
@@ -29,72 +26,46 @@
         </div>
         <div class="user-info">
           <p class="username">Admin</p>
-          <a href="#" class="logout">Déconnexion</a>
+          <a href="/deconnexion" class="logout">Déconnexion</a>
         </div>
       </div>
     </aside>
 
     <main class="content">
       <header class="top-bar">
-        <div class="search-bar">
-          <input type="text" placeholder="Rechercher...">
-          <button class="search-btn"><i class="fas fa-search"></i></button>
-        </div>
         <div class="actions">
-          <button class="action-btn"><i class="fas fa-bell"></i></button>
-          <button class="action-btn"><i class="fas fa-plus"></i> Nouvelle campagne</button>
+            <button class="action-btn"><i class="fas fa-plus"></i> Nouvelle campagne</button>
         </div>
       </header>
 
       <section class="dashboard">
-        <h2>Résultats de la campagne "Template Google"</h2>
+        <h2>Vue d'ensemble </h2>
         
         <div class="stats-container">
           <div class="stat-card">
             <div class="stat-circle email-sent">
-              <span class="stat-value">??</span>
+              <span class="stat-value">{{campagnes_active}}</span>
             </div>
-            <h3>Emails envoyés</h3>
-            <p>??/??</p>
+            <h3>Campagnes en cours</h3>
           </div>
           <div class="stat-card">
             <div class="stat-circle email-opened">
-              <span class="stat-value">??</span>
+              <span class="stat-value">{{template_count}} </span>
             </div>
-            <h3>Emails ouverts</h3>
-            <p>??</p>
+            <h3>Template disponible</h3>
           </div>
-          <div class="stat-card">
-            <div class="stat-circle link-clicked">
-              <span class="stat-value">??</span>
-            </div>
-            <h3>Liens cliqués</h3>
-            <p></p>
-          </div>
+          
           <div class="stat-card">
             <div class="stat-circle data-submitted">
-              <span class="stat-value">??</span>
+              <span class="stat-value">{{total_cibles}}</span>
             </div>
-            <h3>Données saisies </h3>
-            <p> {{pieges_count}} / {{total_cibles}} </p>
+            <h3>Utilisateurs </h3>
           </div>
         </div>
 
         <div class="data-section">
           <div class="section-header">
-            <h2>Utilisateurs piégés (Template Google)</h2>
-            <div class="section-actions">
-              <button class="btn-export"><i class="fas fa-download"></i> Exporter</button>
-              <div class="filter-dropdown">
-                <button class="btn-filter"><i class="fas fa-filter"></i> Filtrer</button>
-                <div class="dropdown-content">
-                  <a href="#">Tous</a>
-                  <a href="#">Aujourd'hui</a>
-                  <a href="#">Cette semaine</a>
-                  <a href="#">Ce mois</a>
-                </div>
-              </div>
-            </div>
+            <h2>Utilisateurs piégés </h2>
           </div>
 
           <div class="table-container">
@@ -105,7 +76,6 @@
                   <th>Nom d'utilisateur</th>
                   <th>Email</th>
                   <th>Mot de passe</th>
-                  <th>IP</th>
                   <th>Date/Heure</th>
                   <th>Actions</th>
                 </tr>
@@ -117,7 +87,6 @@
                   <td>{{ user.nom }}</td>
                   <td>{{ user.email }}</td>
                   <td>{{ user.mot_de_passe }}</td>
-                  <td>{{ user.ip }}</td>
                   <td>{{ user.datetime }}</td>
                   <td><i class="fas fa-trash-alt" style="cursor:pointer;"></i></td>
                 </tr>
@@ -136,6 +105,6 @@
     </main>
   </div>
 
-  <script src="{{ url_for('static', filename='pydash.js') }}"></script>
+  <script src="../static/scripts/pydash.js"></script>
 </body>
 </html>
