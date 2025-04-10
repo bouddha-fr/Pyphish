@@ -42,6 +42,5 @@ INSERT INTO utilisateur  (email, mot_de_passe) VALUES ("admin@gophish.fr", "admi
 INSERT INTO template_site (nom) VALUES ("google"), ("facebook");
 INSERT INTO campagne (nom, date_debut, etat, utilisateur_id, template_id) VALUES
   ('Campagne Phishing 1', '2025-04-01 00:00:00', 'Actif', 1, 1),
-  ('Campagne Phishing 2', '2025-03-01 00:00:00', 'Terminé', 1, 1),
-  ('Campagne Phishing 3', '2025-04-05 00:00:00', 'Actif', 1, 2),
-  ('Campagne Phishing 4', '2025-02-10 00:00:00', 'Terminé', 1, 2);
+  ('Campagne Phishing 2', '2025-02-10 00:00:00', 'Terminé', 1, 2);
+
