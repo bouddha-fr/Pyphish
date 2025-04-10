@@ -1,0 +1,41 @@
+named.conf.local :
+zone "ns.local" {
+        type master;
+        file "/var/lib/bind/ns.local";
+        allow-update { none; };
+        notify yes;
+};
+
+zone "27.16.172.in-addr.arpa" {
+        type master;
+        file "/var/lib/bind/ns.local.rev";
+        allow-update { none; };
+        notify yes;
+};
+
+ns.local :
+$TTL    604800
+@       IN      SOA     ns.local. root.ns.local. (
+                     2024120804         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@                       IN      NS      ns1.hack.local.
+ns1.hack.local.         IN      A       172.16.27.140
+googIe.com.             IN      A       172.16.27.140
+
+ns.local.rev :
+$TTL    604800
+@       IN      SOA     ns.local. root.ns.local. (
+                     2024120803         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      ns1.hack.local.
+60      IN      PTR     ns1.hack.local.
+62      IN      PTR     hack.local.
+140     IN      PTR     googIe.com.
